@@ -1,0 +1,2 @@
+# MessageOfTheDayRaspberry
+MessageOfTheDay for RaspberryPI
