@@ -115,6 +115,9 @@ fi
 label0="$(extend "OS: $(cat /etc/os-release | sed 's/.*PRETTY_NAME=//' | head -n1), Kernel: $(uname -a | awk -F ' ' '{print $3}')")"
 label0="$borderBar  $(color $statsLabelColor "RaspberryPi4..:") $label0$borderBar"
 
+labe20="$(extend "$(uname -a | awk -F ' ' '{print $12}')")"
+labe20="$borderBar  $(color $statsLabelColor "CPU Family....:") $labe20$borderBar"
+
 label1="$(extend "$login")"
 label1="$borderBar  $(color $statsLabelColor "Last Login....:") $label1$borderBar"
 
@@ -145,7 +148,7 @@ label8="$borderBar  $(color $statsLabelColor "Load..........:") $label8$borderBa
 label9="$(extend "Total: $(who | grep -Po '[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}' | wc -l), List IP: $(who | grep -Po '[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}' | awk '{print}' ORS=' ') ")"
 label9="$borderBar  $(color $statsLabelColor "pts connected.:") $label9$borderBar"
 
-stats="$label0\n$label1\n$label2\n$label3\n$label4\n$label5\n$label6\n$label7\n$label8\n$label9"
+stats="$label0\n$labe20\n$label1\n$label2\n$label3\n$label4\n$label5\n$label6\n$label7\n$label8\n$label9"
 
 # Print motd
 echo -e "$header\n$borderEmptyLine\n$greetings\n$borderEmptyLine\n$stats\n$borderEmptyLine\n$borderBottomLine\n" 
@@ -156,4 +159,3 @@ echo "
 | 0. MessageOfTheDayRaspberryPI (https://github.com/stefanostatuti/MessageOfTheDayRaspberry)
 | N.
  =================================================================="
-
